@@ -10,6 +10,7 @@ import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutline
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import SettingsAppIcon from '@mui/icons-material/Settings';
 import styles from './Search.module.css';
+import Sidebar from '../../components/Sidebar/Sidebar.jsx';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { collection, query, orderBy, limit, getDocs, doc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { auth, db } from '../../config/firebase';
@@ -106,26 +107,7 @@ export default function SearchUI() {
         </div>
       </div>
 
-      <div className={styles.sidebar}>
-        <img
-          src="src/assets/logo-square.png"
-          alt="Logo"
-          className={styles.sidebarLogo}
-          onClick={() => handleNavigate('/home')}
-        />
-        <div className={styles.iconContainer}>
-          <HomeIcon className={styles.icon} onClick={() => handleNavigate('/home')} />
-          <SearchIcon className={styles.icon} onClick={() => handleNavigate('/search')} />
-          <AddBoxOutlinedIcon className={styles.icon} onClick={() => handleNavigate('/create')} />
-          <MovieFilterOutlinedIcon className={styles.icon} onClick={() => handleNavigate('/movies')} />
-          <FavoriteBorderOutlinedIcon className={styles.icon} onClick={() => handleNavigate('/favorites')} />
-          <ChatBubbleOutlineOutlinedIcon className={styles.icon} onClick={() => handleNavigate('/chat')} />
-        </div>
-        <SettingsAppIcon className={styles.icon + " " + styles.settingsIcon} onClick={() => handleNavigate('/setting')} />
-        <div className={styles.profile} onClick={() => handleNavigate('/profile')}>
-          <img src={userPhotoURL} alt="Profile" className={styles.profileImage} />
-        </div>
-      </div>
+      <Sidebar userPhotoURL={userPhotoURL} />
 
       <div className={styles.searchPageContainer}>
         <div className={styles.searchCard}>

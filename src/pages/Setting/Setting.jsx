@@ -28,7 +28,7 @@ import {
 } from 'firebase/auth';
 import { doc, getDoc, updateDoc, collection, query, where, getDocs } from 'firebase/firestore';
 import { auth, db } from '../../config/firebase';
-import Sidebar from '../../components/Sidebar/Sidebar';
+import Sidebar from '../../components/Sidebar/Sidebar.jsx';
 import styles from './Setting.module.css';
 
 export default function Setting() {

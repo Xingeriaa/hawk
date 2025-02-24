@@ -13,6 +13,7 @@ import { auth, db } from '../../config/firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 import { doc, getDoc, collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import styles from './Create.module.css';
+import Sidebar from '../../components/Sidebar/Sidebar.jsx';
 
 export default function Create() {
   const navigate = useNavigate();
@@ -152,26 +153,7 @@ export default function Create() {
   return (
     <div className={styles.pageWrapper}>
       {/* Sidebar */}
-      <div className={styles.sidebar}>
-        <img 
-          src="src/assets/logo-square.png" 
-          alt="Logo" 
-          className={styles.sidebarLogo}
-          onClick={() => handleNavigate('/home')}
-        />
-        <div className={styles.iconContainer}>
-          <HomeIcon className={styles.icon} onClick={() => handleNavigate('/home')} />
-          <SearchIcon className={styles.icon} onClick={() => handleNavigate('/search')} />
-          <AddBoxOutlinedIcon className={styles.icon} style={{ color: '#ffcc00' }} onClick={() => handleNavigate('/create')} />
-          <MovieFilterOutlinedIcon className={styles.icon} onClick={() => handleNavigate('/movies')} />
-          <FavoriteBorderOutlinedIcon className={styles.icon} onClick={() => handleNavigate('/favorites')} />
-          <ChatBubbleOutlineOutlinedIcon className={styles.icon} onClick={() => handleNavigate('/chat')} />
-        </div>
-        <SettingsIcon className={`${styles.icon} ${styles.settingsIcon}`} onClick={() => handleNavigate('/setting')} />
-        <div className={styles.profileSidebarProfile} onClick={() => handleNavigate('/profile')}>
-          <img src={userPhotoURL} alt="Profile" className={styles.profileImage} />
-        </div>
-      </div>
+      <Sidebar userPhotoURL={userPhotoURL} />
 
       {/* Create Content Area */}
       <div className={styles.createWrapper}>

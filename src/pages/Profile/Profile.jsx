@@ -12,6 +12,7 @@ import { doc, getDoc, collection, query, where, limit, getDocs, orderBy } from '
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth, db } from '../../config/firebase';
 import styles from './Profile.module.css';
+import Sidebar from '../../components/Sidebar/Sidebar.jsx';
 
 export default function Profile() {
   const navigate = useNavigate();
@@ -105,26 +106,7 @@ export default function Profile() {
   return (
     <>
       <div className={styles.pageWrapper}>
-        <div className={styles.sidebar}>
-          <img
-            src="src/assets/logo-square.png"
-            alt="Logo"
-            className={styles.sidebarLogo}
-            onClick={() => handleNavigate('/home')}
-          />
-          <div className={styles.iconContainer}>
-            <HomeIcon className={styles.icon} onClick={() => handleNavigate('/home')} />
-            <SearchIcon className={styles.icon} onClick={() => handleNavigate('/search')} />
-            <AddBoxOutlinedIcon className={styles.icon} onClick={() => handleNavigate('/create')} />
-            <MovieFilterOutlinedIcon className={styles.icon} onClick={() => handleNavigate('/movies')} />
-            <FavoriteBorderOutlinedIcon className={styles.icon} onClick={() => handleNavigate('/favorites')} />
-            <ChatBubbleOutlineOutlinedIcon className={styles.icon} onClick={() => handleNavigate('/chat')} />
-          </div>
-          <SettingsIcon className={`${styles.icon} ${styles.settingsIcon}`} onClick={() => handleNavigate('/setting')} />
-          <div className={styles.profileSidebarProfile} onClick={() => handleNavigate('/profile')}>
-            <img src={userPhotoURL} alt="Profile" className={styles.profileImage} />
-          </div>
-        </div>
+        <Sidebar userPhotoURL={userPhotoURL} />
 
         <div className={styles.profileContentContainer}>
           <div className={styles.profileCard}>

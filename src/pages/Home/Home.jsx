@@ -14,6 +14,7 @@ import LockIcon from '@mui/icons-material/Lock';
 import GroupIcon from '@mui/icons-material/Group';
 import Tooltip from '@mui/material/Tooltip';
 import ConfirmDialog from '../../components/ConfirmDialog/ConfirmDialog.jsx';
+import Sidebar from '../../components/Sidebar/Sidebar.jsx';
 
 import { auth, db } from '../../config/firebase'; 
 import { onAuthStateChanged } from 'firebase/auth';
@@ -230,7 +231,7 @@ export default function Home() {
               postUserPhoto = userData.profilePicUrl || "src/assets/DefaultProfilePic/Default.jpg";
             }
           } catch (error) {
-            console.error("Error fetching user data for post:", error);
+            console.error("Error fetching user data:", error);
           }
         }
         if (
@@ -291,26 +292,7 @@ export default function Home() {
     <>
       <div className={styles.pageWrapper}>
         {/* Sidebar */}
-        <div className={styles.sidebar}>
-          <img 
-            src="src/assets/logo-square.png" 
-            alt="Logo" 
-            className={styles.sidebarLogo}
-            onClick={() => handleNavigate('/home')}
-          />
-          <div className={styles.iconContainer}>
-            <HomeIcon className={styles.icon} onClick={() => handleNavigate('/home')} />
-            <SearchIcon className={styles.icon} onClick={() => handleNavigate('/search')} />
-            <AddBoxOutlinedIcon className={styles.icon} onClick={() => handleNavigate('/create')} />
-            <MovieFilterOutlinedIcon className={styles.icon} onClick={() => handleNavigate('/movies')} />
-            <FavoriteBorderOutlinedIcon className={styles.icon} onClick={toggleNotifications} />
-            <ChatBubbleOutlineOutlinedIcon className={styles.icon} onClick={() => handleNavigate('/chat')} />
-          </div>
-          <SettingsIcon className={`${styles.icon} ${styles.settingsIcon}`} onClick={() => handleNavigate('/setting')} />
-          <div className={styles.profileSidebarProfile} onClick={() => handleNavigate('/profile')}>
-            <img src={userPhotoURL} alt="Profile" className={styles.profileImage} />
-          </div>
-        </div>
+        <Sidebar userPhotoURL={userPhotoURL} />
 
         <div className={styles.contentArea}>
           <div className={styles.feedContainer}>
