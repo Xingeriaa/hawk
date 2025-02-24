@@ -1,0 +1,278 @@
+:global(html, body) {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  background: #000;
+  color: #fff;
+}
+
+.pageWrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar styles */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  background: #000;
+  border-right: 1px solid #333;
+  padding-top: 20px;
+}
+
+.sidebarLogo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: transform 0.2s ease;
+}
+
+.sidebarLogo:hover {
+  transform: scale(1.05);
+}
+
+.allIcons {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.settingsIconContainer {
+  margin-top: auto;
+  margin-bottom: 27px;
+}
+
+.profileSidebarProfile {
+  width: 50px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon {
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.icon:hover {
+  color: #ffcc00;
+  transform: scale(1.1);
+}
+
+.profileImage {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid #444;
+  object-fit: cover;
+}
+
+/* Content Area */
+.contentArea {
+  flex: 1;
+  width: 100%;
+  padding: 20px;
+}
+
+/* Top Navigation (for mobile) */
+.topNav {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #333;
+}
+
+.backIcon {
+  font-size: 24px;
+  color: #fff;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.settingsTitle {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* Settings Card */
+.settingsCard {
+  background: #111;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
+  height: 80%;
+  overflow-y: auto;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #333;
+}
+
+.tab {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  padding: 10px 0;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+
+.tab.active {
+  font-weight: bold;
+  border-bottom: 2px solid #fff;
+}
+
+/* Setting sections */
+.settingSection,
+.otherSettingsSection {
+  margin-top: 20px;
+}
+
+.settingRow {
+  display: flex;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #333;
+}
+
+.settingRowIcon {
+  font-size: 20px;
+  margin-right: 15px;
+  color: #fff;
+}
+
+.settingRowText {
+  flex: 1;
+  font-size: 16px;
+  color: #fff;
+}
+
+.settingRowRight,
+.settingRowArrow {
+  font-size: 14px;
+  color: #aaa;
+  display: flex;
+  align-items: center;
+}
+
+.betaBadge {
+  display: inline-block;
+  background: #5c2b68;
+  color: #fff;
+  font-size: 10px;
+  text-transform: uppercase;
+  padding: 2px 5px;
+  border-radius: 4px;
+  margin: 0 10px;
+}
+
+.toggleSwitch .MuiSwitch-track {
+  background-color: #888 !important;
+}
+
+.toggleSwitch .MuiSwitch-thumb {
+  background-color: #fff !important;
+}
+
+.otherSettingsTitle {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #fff;
+}
+
+.otherSettingsDesc {
+  font-size: 12px;
+  color: #bbb;
+  margin-bottom: 10px;
+}
+
+/* Bottom Navigation */
+.bottomNavContainer {
+  display: flex;
+  position: fixed;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #000;
+  padding: 10px 0;
+  bottom: 0;
+  border-top: 1px solid #333;
+  z-index: 10;
+}
+
+.bottomProfile {
+  margin-bottom: 0;
+}
+
+/* Responsive */
+@media (min-width: 1024px) {
+  .bottomNavContainer {
+    display: none;
+  }
+  .sidebar {
+    display: flex;
+  }
+  .topNav {
+    display: none;
+  }
+  .contentArea {
+    max-width: 600px;
+    margin: 20px auto;
+  }
+}
+
+@media (max-width: 1023px) {
+  .sidebar {
+    display: none;
+  }
+  .topNav {
+    display: flex;
+  }
+  .bottomNavContainer {
+    display: flex;
+  }
+}
+
+.logoutButtonContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.logoutButton {
+  background: #d00;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.logoutButton:hover {
+  background: #c00;
+}
+
+.logoutButton:active {
+  background: #a00;
+}

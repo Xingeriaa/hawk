@@ -1,0 +1,70 @@
+/* Sidebar.module.css */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 80px;
+  background: #000;
+  align-items: center;
+  border-right: 1px solid #333;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.sidebarLogo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: transform 0.2s ease;
+}
+
+.sidebarLogo:hover {
+  transform: scale(1.05);
+}
+
+.iconContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.icon {
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.icon:hover {
+  color: #ffcc00;
+  transform: scale(1.1);
+}
+
+.settingsIcon {
+  margin-bottom: 30px;
+}
+
+.profileSidebarProfile {
+  width: 50px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profileImage {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid #444;
+  object-fit: cover;
+}

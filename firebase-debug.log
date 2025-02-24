@@ -1,0 +1,291 @@
+[debug] [2024-12-15T07:52:55.194Z] ----------------------------------------------------------------------
+[debug] [2024-12-15T07:52:55.196Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Xingeria\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2024-12-15T07:52:55.197Z] CLI Version:   13.29.1
+[debug] [2024-12-15T07:52:55.197Z] Platform:      win32
+[debug] [2024-12-15T07:52:55.197Z] Node Version:  v23.3.0
+[debug] [2024-12-15T07:52:55.197Z] Time:          Sun Dec 15 2024 14:52:55 GMT+0700 (Indochina Time)
+[debug] [2024-12-15T07:52:55.197Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-12-15T07:52:55.204Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-12-15T07:52:55.204Z] > authorizing via signed-in user (trieunttb01004@fpt.edu.vn)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  D:\SyncedFolder\moment-snap
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2024-12-15T07:53:03.657Z] Checked if tokens are valid: true, expires at: 1734252622149
+[debug] [2024-12-15T07:53:03.657Z] Checked if tokens are valid: true, expires at: 1734252622149
+[debug] [2024-12-15T07:53:03.658Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=100
+[debug] [2024-12-15T07:53:04.343Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2024-12-15T07:53:04.343Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[info] i  Using project hawktuah-ea1ff (HawkTuah) 
+[info] 
+=== Dataconnect Setup
+[debug] [2024-12-15T07:53:07.154Z] Checked if tokens are valid: true, expires at: 1734252622149
+[debug] [2024-12-15T07:53:07.154Z] Checked if tokens are valid: true, expires at: 1734252622149
+[debug] [2024-12-15T07:53:07.154Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/hawktuah-ea1ff/billingInfo [none]
+[debug] [2024-12-15T07:53:08.368Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/hawktuah-ea1ff/billingInfo 200
+[debug] [2024-12-15T07:53:08.368Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/hawktuah-ea1ff/billingInfo {"name":"projects/hawktuah-ea1ff/billingInfo","projectId":"hawktuah-ea1ff","billingAccountName":"","billingEnabled":false}
+[info] i  dataconnect: ensuring required API sqladmin.googleapis.com is enabled... 
+[debug] [2024-12-15T07:53:08.369Z] Checked if tokens are valid: true, expires at: 1734252622149
+[debug] [2024-12-15T07:53:08.369Z] Checked if tokens are valid: true, expires at: 1734252622149
+[debug] [2024-12-15T07:53:08.369Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/hawktuah-ea1ff/services/sqladmin.googleapis.com [none]
+[debug] [2024-12-15T07:53:08.369Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/hawktuah-ea1ff/services/sqladmin.googleapis.com x-goog-quota-user=projects/hawktuah-ea1ff
+[debug] [2024-12-15T07:53:09.733Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/hawktuah-ea1ff/services/sqladmin.googleapis.com 200
+[debug] [2024-12-15T07:53:09.733Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/hawktuah-ea1ff/services/sqladmin.googleapis.com [omitted]
+[warn] !  dataconnect: missing required API sqladmin.googleapis.com. Enabling now... 
+[debug] [2024-12-15T07:53:09.733Z] Checked if tokens are valid: true, expires at: 1734252622149
+[debug] [2024-12-15T07:53:09.733Z] Checked if tokens are valid: true, expires at: 1734252622149
+[debug] [2024-12-15T07:53:09.734Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1/projects/hawktuah-ea1ff/services/sqladmin.googleapis.com:enable [none]
+[debug] [2024-12-15T07:53:09.734Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1/projects/hawktuah-ea1ff/services/sqladmin.googleapis.com:enable x-goog-quota-user=projects/hawktuah-ea1ff
+[debug] [2024-12-15T07:53:10.995Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1/projects/hawktuah-ea1ff/services/sqladmin.googleapis.com:enable 200
+[debug] [2024-12-15T07:53:10.995Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1/projects/hawktuah-ea1ff/services/sqladmin.googleapis.com:enable [omitted]
+[debug] [2024-12-15T07:53:21.003Z] Checked if tokens are valid: true, expires at: 1734252622149
+[debug] [2024-12-15T07:53:21.003Z] Checked if tokens are valid: true, expires at: 1734252622149
+[debug] [2024-12-15T07:53:21.003Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/hawktuah-ea1ff/services/sqladmin.googleapis.com [none]
+[debug] [2024-12-15T07:53:21.003Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/hawktuah-ea1ff/services/sqladmin.googleapis.com x-goog-quota-user=projects/hawktuah-ea1ff
+[debug] [2024-12-15T07:53:22.317Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/hawktuah-ea1ff/services/sqladmin.googleapis.com 200
+[debug] [2024-12-15T07:53:22.317Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/hawktuah-ea1ff/services/sqladmin.googleapis.com [omitted]
+[info] +  dataconnect: required API sqladmin.googleapis.com is enabled 
+[info] +  Wrote dataconnect\dataconnect.yaml 
+[info] +  Wrote dataconnect\schema\schema.gql 
+[info] +  Wrote dataconnect\connector\connector.yaml 
+[info] +  Wrote dataconnect\connector\queries.gql 
+[info] +  Wrote dataconnect\connector\mutations.gql 
+[info] +  Detected WEB app in directory D:\SyncedFolder\moment-snap 
+[info] i  Wrote new config to D:\SyncedFolder\moment-snap\dataconnect\connector/connector.yaml 
+[info] i  dataconnect: downloading dataconnect-emulator-1.7.5.exe... {"metadata":{"emulator":{"name":"dataconnect"},"message":"downloading dataconnect-emulator-1.7.5.exe..."}}
+[debug] [2024-12-15T07:53:27.862Z] >>> [apiv2][query] GET https://storage.googleapis.com/firemat-preview-drop/emulator/dataconnect-emulator-windows-v1.7.5 
+[debug] [2024-12-15T07:53:28.307Z] <<< [apiv2][status] GET https://storage.googleapis.com/firemat-preview-drop/emulator/dataconnect-emulator-windows-v1.7.5 200
+[debug] [2024-12-15T07:53:28.307Z] <<< [apiv2][body] GET https://storage.googleapis.com/firemat-preview-drop/emulator/dataconnect-emulator-windows-v1.7.5 [stream]
+[info] I1215 14:53:31.645030    8300 codegen.go:82] [connector "default" javascriptSdk] Generating sources into "D:\\SyncedFolder\\moment-snap\\dataconnect-generated\\js\\default-connector"
+I1215 14:53:31.646049    8300 generate.go:40] Generated all sources. Writing them to disk...
+I1215 14:53:31.647067    8300 collector.go:107] connector "default" javascriptSdk wrote into "D:\\SyncedFolder\\moment-snap\\dataconnect-generated\\js\\default-connector"
+Generated sources: esm\index.esm.js [184B] esm\package.json [17B] index.cjs.js [225B] package.json [634B] index.d.ts [264B] 
+I1215 14:53:31.680641    8300 installsdk.go:76] Running command: C:\Program Files\nodejs\npm.cmd install file:dataconnect-generated\js\default-connector
+
+[info] i  Generated SDK code for default 
+[info] +  If you'd like to add more generated SDKs to your app your later, run firebase init dataconnect:sdk again 
+[info] i  If you'd like to provision a CloudSQL Postgres instance on the Firebase Data Connect no-cost trial:
+1. Please upgrade to the pay-as-you-go (Blaze) billing plan. Visit the following page:
+     https://console.firebase.google.com/project/hawktuah-ea1ff/usage/details
+2. Run firebase init dataconnect again to configure the Cloud SQL instance.
+3. Run firebase deploy --only dataconnect to deploy your Data Connect service. 
+[info] 
+=== Firestore Setup
+[debug] [2024-12-15T07:53:33.974Z] Checked if tokens are valid: true, expires at: 1734252622149
+[debug] [2024-12-15T07:53:33.975Z] Checked if tokens are valid: true, expires at: 1734252622149
+[debug] [2024-12-15T07:53:33.975Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/hawktuah-ea1ff/services/firestore.googleapis.com [none]
+[debug] [2024-12-15T07:53:33.975Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/hawktuah-ea1ff/services/firestore.googleapis.com x-goog-quota-user=projects/hawktuah-ea1ff
+[debug] [2024-12-15T07:53:35.408Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/hawktuah-ea1ff/services/firestore.googleapis.com 200
+[debug] [2024-12-15T07:53:35.408Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/hawktuah-ea1ff/services/firestore.googleapis.com [omitted]
+[debug] [2024-12-15T07:53:35.408Z] Checked if tokens are valid: true, expires at: 1734252622149
+[debug] [2024-12-15T07:53:35.408Z] Checked if tokens are valid: true, expires at: 1734252622149
+[debug] [2024-12-15T07:53:35.408Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/hawktuah-ea1ff/databases/(default) [none]
+[debug] [2024-12-15T07:53:35.876Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/hawktuah-ea1ff/databases/(default) 200
+[debug] [2024-12-15T07:53:35.876Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/hawktuah-ea1ff/databases/(default) {"name":"projects/hawktuah-ea1ff/databases/(default)","uid":"41daba68-67c3-494c-8e7c-a2e9a7b8fb42","createTime":"2024-12-06T12:32:23.748270Z","updateTime":"2024-12-06T12:32:23.748270Z","locationId":"asia-southeast1","type":"FIRESTORE_NATIVE","concurrencyMode":"PESSIMISTIC","versionRetentionPeriod":"3600s","earliestVersionTime":"2024-12-15T06:53:35.453351Z","appEngineIntegrationMode":"DISABLED","keyPrefix":"zas","pointInTimeRecoveryEnablement":"POINT_IN_TIME_RECOVERY_DISABLED","deleteProtectionState":"DELETE_PROTECTION_DISABLED","etag":"IPTMweOlqYoDMI69+cSdpYoD"}
+[debug] [2024-12-15T07:53:35.876Z] database_type: FIRESTORE_NATIVE
+[debug] [2024-12-15T07:53:35.876Z] database_type: FIRESTORE_NATIVE
+[debug] [2024-12-15T07:53:35.877Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-12-15T07:53:35.877Z] > authorizing via signed-in user (trieunttb01004@fpt.edu.vn)
+[debug] [2024-12-15T07:53:35.877Z] [iam] checking project hawktuah-ea1ff for permissions ["firebase.projects.get"]
+[debug] [2024-12-15T07:53:35.877Z] Checked if tokens are valid: true, expires at: 1734252622149
+[debug] [2024-12-15T07:53:35.877Z] Checked if tokens are valid: true, expires at: 1734252622149
+[debug] [2024-12-15T07:53:35.877Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/hawktuah-ea1ff:testIamPermissions [none]
+[debug] [2024-12-15T07:53:35.877Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/hawktuah-ea1ff:testIamPermissions x-goog-quota-user=projects/hawktuah-ea1ff
+[debug] [2024-12-15T07:53:35.877Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/hawktuah-ea1ff:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2024-12-15T07:53:36.884Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/hawktuah-ea1ff:testIamPermissions 200
+[debug] [2024-12-15T07:53:36.884Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/hawktuah-ea1ff:testIamPermissions {"permissions":["firebase.projects.get"]}
+[info] 
+[info] Firestore Security Rules allow you to define how and when to allow
+[info] requests. You can keep these rules in your project directory
+[info] and publish them with firebase deploy.
+[info] 
+[debug] [2024-12-15T07:53:39.496Z] Checked if tokens are valid: true, expires at: 1734252622149
+[debug] [2024-12-15T07:53:39.496Z] Checked if tokens are valid: true, expires at: 1734252622149
+[debug] [2024-12-15T07:53:39.497Z] >>> [apiv2][query] GET https://firebaserules.googleapis.com/v1/projects/hawktuah-ea1ff/releases pageSize=10&pageToken=
+[debug] [2024-12-15T07:53:40.919Z] <<< [apiv2][status] GET https://firebaserules.googleapis.com/v1/projects/hawktuah-ea1ff/releases 200
+[debug] [2024-12-15T07:53:40.919Z] <<< [apiv2][body] GET https://firebaserules.googleapis.com/v1/projects/hawktuah-ea1ff/releases {"releases":[{"name":"projects/hawktuah-ea1ff/releases/cloud.firestore","rulesetName":"projects/hawktuah-ea1ff/rulesets/4239a0d7-f16f-4f71-ad69-bb458c603309","createTime":"2024-12-06T12:32:31.710331Z","updateTime":"2024-12-06T13:48:16.017644Z"}]}
+[debug] [2024-12-15T07:53:40.920Z] Found ruleset: projects/hawktuah-ea1ff/rulesets/4239a0d7-f16f-4f71-ad69-bb458c603309
+[debug] [2024-12-15T07:53:40.920Z] Checked if tokens are valid: true, expires at: 1734252622149
+[debug] [2024-12-15T07:53:40.920Z] Checked if tokens are valid: true, expires at: 1734252622149
+[debug] [2024-12-15T07:53:40.920Z] >>> [apiv2][query] GET https://firebaserules.googleapis.com/v1/projects/hawktuah-ea1ff/rulesets/4239a0d7-f16f-4f71-ad69-bb458c603309 [none]
+[debug] [2024-12-15T07:53:42.233Z] <<< [apiv2][status] GET https://firebaserules.googleapis.com/v1/projects/hawktuah-ea1ff/rulesets/4239a0d7-f16f-4f71-ad69-bb458c603309 200
+[debug] [2024-12-15T07:53:42.233Z] <<< [apiv2][body] GET https://firebaserules.googleapis.com/v1/projects/hawktuah-ea1ff/rulesets/4239a0d7-f16f-4f71-ad69-bb458c603309 [omitted]
+[info] 
+[info] Firestore indexes allow you to perform complex queries while
+[info] maintaining performance that scales with the size of the result
+[info] set. You can keep index definitions in your project directory
+[info] and publish them with firebase deploy.
+[info] 
+[debug] [2024-12-15T07:53:43.880Z] Checked if tokens are valid: true, expires at: 1734252622149
+[debug] [2024-12-15T07:53:43.880Z] Checked if tokens are valid: true, expires at: 1734252622149
+[debug] [2024-12-15T07:53:43.880Z] Checked if tokens are valid: true, expires at: 1734252622149
+[debug] [2024-12-15T07:53:43.880Z] Checked if tokens are valid: true, expires at: 1734252622149
+[debug] [2024-12-15T07:53:43.880Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/hawktuah-ea1ff/databases/(default)/collectionGroups/-/indexes [none]
+[debug] [2024-12-15T07:53:43.881Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/hawktuah-ea1ff/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false OR ttlConfig:* [none]
+[debug] [2024-12-15T07:53:44.310Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/hawktuah-ea1ff/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false OR ttlConfig:* 200
+[debug] [2024-12-15T07:53:44.310Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/hawktuah-ea1ff/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false OR ttlConfig:* {"fields":[{"name":"projects/hawktuah-ea1ff/databases/(default)/collectionGroups/__default__/fields/*","indexConfig":{"indexes":[{"queryScope":"COLLECTION","fields":[{"fieldPath":"*","order":"ASCENDING"}],"state":"READY"},{"queryScope":"COLLECTION","fields":[{"fieldPath":"*","order":"DESCENDING"}],"state":"READY"},{"queryScope":"COLLECTION","fields":[{"fieldPath":"*","arrayConfig":"CONTAINS"}],"state":"READY"}]}}]}
+[debug] [2024-12-15T07:53:44.338Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/hawktuah-ea1ff/databases/(default)/collectionGroups/-/indexes 200
+[debug] [2024-12-15T07:53:44.338Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/hawktuah-ea1ff/databases/(default)/collectionGroups/-/indexes {}
+[info] 
+=== Genkit Setup
+[debug] [2024-12-15T07:53:44.941Z] Error: spawn(npm, view, genkit, version)
+  Stderr:
+{"type":"Buffer","data":[40,110,111,100,101,58,50,50,53,51,50,41,32,69,120,112,101,114,105,109,101,110,116,97,108,87,97,114,110,105,110,103,58,32,67,111,109,109,111,110,74,83,32,109,111,100,117,108,101,32,67,58,92,80,114,111,103,114,97,109,32,70,105,108,101,115,92,110,111,100,101,106,115,92,110,111,100,101,95,109,111,100,117,108,101,115,92,110,112,109,92,110,111,100,101,95,109,111,100,117,108,101,115,92,100,101,98,117,103,92,115,114,99,92,110,111,100,101,46,106,115,32,105,115,32,108,111,97,100,105,110,103,32,69,83,32,77,111,100,117,108,101,32,67,58,92,80,114,111,103,114,97,109,32,70,105,108,101,115,92,110,111,100,101,106,115,92,110,111,100,101,95,109,111,100,117,108,101,115,92,110,112,109,92,110,111,100,101,95,109,111,100,117,108,101,115,92,115,117,112,112,111,114,116,115,45,99,111,108,111,114,92,105,110,100,101,120,46,106,115,32,117,115,105,110,103,32,114,101,113,117,105,114,101,40,41,46,10,83,117,112,112,111,114,116,32,102,111,114,32,108,111,97,100,105,110,103,32,69,83,32,77,111,100,117,108,101,32,105,110,32,114,101,113,117,105,114,101,40,41,32,105,115,32,97,110,32,101,120,112,101,114,105,109,101,110,116,97,108,32,102,101,97,116,117,114,101,32,97,110,100,32,109,105,103,104,116,32,99,104,97,110,103,101,32,97,116,32,97,110,121,32,116,105,109,101,10,40,85,115,101,32,96,110,111,100,101,32,45,45,116,114,97,99,101,45,119,97,114,110,105,110,103,115,32,46,46,46,96,32,116,111,32,115,104,111,119,32,119,104,101,114,101,32,116,104,101,32,119,97,114,110,105,110,103,32,119,97,115,32,99,114,101,97,116,101,100,41,10]}
+
+[debug] [2024-12-15T07:53:48.616Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-12-15T07:53:48.616Z] > authorizing via signed-in user (trieunttb01004@fpt.edu.vn)
+[debug] [2024-12-15T07:53:48.616Z] [iam] checking project hawktuah-ea1ff for permissions ["firebase.projects.get"]
+[debug] [2024-12-15T07:53:48.616Z] Checked if tokens are valid: true, expires at: 1734252622149
+[debug] [2024-12-15T07:53:48.616Z] Checked if tokens are valid: true, expires at: 1734252622149
+[debug] [2024-12-15T07:53:48.616Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/hawktuah-ea1ff:testIamPermissions [none]
+[debug] [2024-12-15T07:53:48.616Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/hawktuah-ea1ff:testIamPermissions x-goog-quota-user=projects/hawktuah-ea1ff
+[debug] [2024-12-15T07:53:48.616Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/hawktuah-ea1ff:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2024-12-15T07:53:49.613Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/hawktuah-ea1ff:testIamPermissions 200
+[debug] [2024-12-15T07:53:49.613Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/hawktuah-ea1ff:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2024-12-15T07:53:49.613Z] Checked if tokens are valid: true, expires at: 1734252622149
+[debug] [2024-12-15T07:53:49.613Z] Checked if tokens are valid: true, expires at: 1734252622149
+[debug] [2024-12-15T07:53:49.613Z] Checked if tokens are valid: true, expires at: 1734252622149
+[debug] [2024-12-15T07:53:49.613Z] Checked if tokens are valid: true, expires at: 1734252622149
+[debug] [2024-12-15T07:53:49.613Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/hawktuah-ea1ff/services/cloudfunctions.googleapis.com [none]
+[debug] [2024-12-15T07:53:49.613Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/hawktuah-ea1ff/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/hawktuah-ea1ff
+[debug] [2024-12-15T07:53:49.614Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/hawktuah-ea1ff/services/runtimeconfig.googleapis.com [none]
+[debug] [2024-12-15T07:53:49.615Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/hawktuah-ea1ff/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/hawktuah-ea1ff
+[debug] [2024-12-15T07:53:51.005Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/hawktuah-ea1ff/services/runtimeconfig.googleapis.com 200
+[debug] [2024-12-15T07:53:51.005Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/hawktuah-ea1ff/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2024-12-15T07:53:51.016Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/hawktuah-ea1ff/services/cloudfunctions.googleapis.com 200
+[debug] [2024-12-15T07:53:51.016Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/hawktuah-ea1ff/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2024-12-15T07:53:51.016Z] Checked if tokens are valid: true, expires at: 1734252622149
+[debug] [2024-12-15T07:53:51.016Z] Checked if tokens are valid: true, expires at: 1734252622149
+[debug] [2024-12-15T07:53:51.016Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1/projects/hawktuah-ea1ff/services/cloudfunctions.googleapis.com:enable [none]
+[debug] [2024-12-15T07:53:51.016Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1/projects/hawktuah-ea1ff/services/cloudfunctions.googleapis.com:enable x-goog-quota-user=projects/hawktuah-ea1ff
+[debug] [2024-12-15T07:53:51.495Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1/projects/hawktuah-ea1ff/services/cloudfunctions.googleapis.com:enable 200
+[debug] [2024-12-15T07:53:51.495Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1/projects/hawktuah-ea1ff/services/cloudfunctions.googleapis.com:enable [omitted]
+[debug] [2024-12-15T07:54:01.506Z] Checked if tokens are valid: true, expires at: 1734252622149
+[debug] [2024-12-15T07:54:01.506Z] Checked if tokens are valid: true, expires at: 1734252622149
+[debug] [2024-12-15T07:54:01.506Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/hawktuah-ea1ff/services/cloudfunctions.googleapis.com [none]
+[debug] [2024-12-15T07:54:01.506Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/hawktuah-ea1ff/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/hawktuah-ea1ff
+[debug] [2024-12-15T07:54:02.851Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/hawktuah-ea1ff/services/cloudfunctions.googleapis.com 200
+[debug] [2024-12-15T07:54:02.851Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/hawktuah-ea1ff/services/cloudfunctions.googleapis.com [omitted]
+[info] Let's create a new codebase for your functions.
+[info] A directory corresponding to the codebase will be created in your project
+[info] with sample code pre-configured.
+
+[info] See https://firebase.google.com/docs/functions/organize-functions for
+[info] more information on organizing your functions using codebases.
+
+[info] Functions can be deployed with firebase deploy.
+
+[info] +  Wrote functions/package.json 
+[info] +  Wrote functions/.eslintrc.js 
+[info] +  Wrote functions/tsconfig.json 
+[info] +  Wrote functions/tsconfig.dev.json 
+[info] +  Wrote functions/src/index.ts 
+[info] +  Wrote functions/.gitignore 
+[info] 
+[info] i  genkit: Installing Genkit CLI version 0.9.12
+ 
+[info] i  genkit: Installing NPM packages for genkit 
+[info] +  genkit: Successfully installed NPM packages 
+[info] i  genkit: Updating tsconfig.json 
+[info] +  genkit: Successfully updated tsconfig.json 
+[info] i  genkit: Updating package.json 
+[info] +  genkit: Successfully updated package.json 
+[info] i  genkit: Generating sample file 
+[info] +  genkit: Successfully generated sample file (src/genkit-sample.ts) 
+[info] Start the Genkit developer experience by running:
+[info] 
+[info]     cd functions && npm run genkit:start
+[info] 
+=== Functions Setup
+[debug] [2024-12-15T08:19:15.150Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-12-15T08:19:15.150Z] > authorizing via signed-in user (trieunttb01004@fpt.edu.vn)
+[debug] [2024-12-15T08:19:15.150Z] [iam] checking project hawktuah-ea1ff for permissions ["firebase.projects.get"]
+[debug] [2024-12-15T08:19:15.150Z] Checked if tokens are valid: true, expires at: 1734252622149
+[debug] [2024-12-15T08:19:15.150Z] Checked if tokens are valid: true, expires at: 1734252622149
+[debug] [2024-12-15T08:19:15.150Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/hawktuah-ea1ff:testIamPermissions [none]
+[debug] [2024-12-15T08:19:15.150Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/hawktuah-ea1ff:testIamPermissions x-goog-quota-user=projects/hawktuah-ea1ff
+[debug] [2024-12-15T08:19:15.150Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/hawktuah-ea1ff:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2024-12-15T08:19:16.157Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/hawktuah-ea1ff:testIamPermissions 200
+[debug] [2024-12-15T08:19:16.157Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/hawktuah-ea1ff:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2024-12-15T08:19:16.158Z] Checked if tokens are valid: true, expires at: 1734252622149
+[debug] [2024-12-15T08:19:16.158Z] Checked if tokens are valid: true, expires at: 1734252622149
+[debug] [2024-12-15T08:19:16.158Z] Checked if tokens are valid: true, expires at: 1734252622149
+[debug] [2024-12-15T08:19:16.158Z] Checked if tokens are valid: true, expires at: 1734252622149
+[debug] [2024-12-15T08:19:16.158Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/hawktuah-ea1ff/services/cloudfunctions.googleapis.com [none]
+[debug] [2024-12-15T08:19:16.158Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/hawktuah-ea1ff/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/hawktuah-ea1ff
+[debug] [2024-12-15T08:19:16.159Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/hawktuah-ea1ff/services/runtimeconfig.googleapis.com [none]
+[debug] [2024-12-15T08:19:16.159Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/hawktuah-ea1ff/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/hawktuah-ea1ff
+[debug] [2024-12-15T08:19:17.573Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/hawktuah-ea1ff/services/runtimeconfig.googleapis.com 200
+[debug] [2024-12-15T08:19:17.573Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/hawktuah-ea1ff/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2024-12-15T08:19:17.582Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/hawktuah-ea1ff/services/cloudfunctions.googleapis.com 200
+[debug] [2024-12-15T08:19:17.582Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/hawktuah-ea1ff/services/cloudfunctions.googleapis.com [omitted]
+[info] 
+Detected existing codebase(s): default
+
+[info] Let's create a new codebase for your functions.
+[info] A directory corresponding to the codebase will be created in your project
+[info] with sample code pre-configured.
+
+[info] See https://firebase.google.com/docs/functions/organize-functions for
+[info] more information on organizing your functions using codebases.
+
+[info] Functions can be deployed with firebase deploy.
+
+[info] +  Wrote hawktuah/package.json 
+[info] +  Wrote hawktuah/.eslintrc.js 
+[info] +  Wrote hawktuah/index.js 
+[info] +  Wrote hawktuah/.gitignore 
+[info] 
+=== Apphosting Setup
+[debug] [2024-12-15T08:25:02.652Z] Checked if tokens are valid: true, expires at: 1734252622149
+[debug] [2024-12-15T08:25:02.652Z] Checked if tokens are valid: true, expires at: 1734252622149
+[debug] [2024-12-15T08:25:02.652Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/hawktuah-ea1ff/billingInfo [none]
+[debug] [2024-12-15T08:25:03.808Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/hawktuah-ea1ff/billingInfo 200
+[debug] [2024-12-15T08:25:03.809Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/hawktuah-ea1ff/billingInfo {"name":"projects/hawktuah-ea1ff/billingInfo","projectId":"hawktuah-ea1ff","billingAccountName":"","billingEnabled":false}
+[info] i  Writing default settings to apphosting.yaml... 
+[info] +  Wrote apphosting.yaml 
+[info] +  Create a new App Hosting backend with `firebase apphosting:backends:create` 
+[info] 
+=== Hosting Setup
+[debug] [2024-12-15T08:25:03.812Z] Checked if tokens are valid: true, expires at: 1734252622149
+[debug] [2024-12-15T08:25:03.812Z] Checked if tokens are valid: true, expires at: 1734252622149
+[debug] [2024-12-15T08:25:03.813Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/hawktuah-ea1ff [none]
+[debug] [2024-12-15T08:25:04.242Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/hawktuah-ea1ff 200
+[debug] [2024-12-15T08:25:04.242Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/hawktuah-ea1ff {"projectId":"hawktuah-ea1ff","projectNumber":"532137125065","displayName":"HawkTuah","name":"projects/hawktuah-ea1ff","resources":{"hostingSite":"hawktuah-ea1ff","realtimeDatabaseInstance":"hawktuah-ea1ff-default-rtdb"},"state":"ACTIVE","etag":"1_a28af56e-04c2-4526-bd60-3b9cb5f96f1a"}
+[info] 
+[info] Your public directory is the folder (relative to your project directory) that
+[info] will contain Hosting assets to be uploaded with firebase deploy. If you
+[info] have a build process for your assets, use your build's output directory.
+[info] 
+[info] +  Wrote public/404.html 
+[debug] [2024-12-15T08:25:20.453Z] >>> [apiv2][query] GET https://www.gstatic.com/firebasejs/releases.json [none]
+[debug] [2024-12-15T08:25:20.619Z] <<< [apiv2][status] GET https://www.gstatic.com/firebasejs/releases.json 200
+[debug] [2024-12-15T08:25:20.619Z] <<< [apiv2][body] GET https://www.gstatic.com/firebasejs/releases.json {"current":{"version":"11.1.0","browserURL":"https://www.gstatic.com/firebasejs/11.1.0/firebase.js","packageURL":"https://www.gstatic.com/firebasejs/11.1.0/firebase.tgz"},"live":{"version":"11.1","browserURL":"https://www.gstatic.com/firebasejs/live/11.1/firebase.js","packageURL":"https://www.gstatic.com/firebasejs/live/11.1/firebase.tgz"},"components":{"analytics":"https://www.gstatic.com/firebasejs/11.1.0/firebase-analytics.js","app":"https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js","app-check":"https://www.gstatic.com/firebasejs/11.1.0/firebase-app-check.js","auth":"https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js","auth/cordova":"https://www.gstatic.com/firebasejs/11.1.0/firebase-auth/cordova.js","auth/web-extension":"https://www.gstatic.com/firebasejs/11.1.0/firebase-auth/web-extension.js","functions":"https://www.gstatic.com/firebasejs/11.1.0/firebase-functions.js","firestore":"https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js","firestore/lite":"https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore/lite.js","installations":"https://www.gstatic.com/firebasejs/11.1.0/firebase-installations.js","storage":"https://www.gstatic.com/firebasejs/11.1.0/firebase-storage.js","performance":"https://www.gstatic.com/firebasejs/11.1.0/firebase-performance.js","remote-config":"https://www.gstatic.com/firebasejs/11.1.0/firebase-remote-config.js","messaging":"https://www.gstatic.com/firebasejs/11.1.0/firebase-messaging.js","messaging/sw":"https://www.gstatic.com/firebasejs/11.1.0/firebase-messaging/sw.js","database":"https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js","vertexai":"https://www.gstatic.com/firebasejs/11.1.0/firebase-vertexai.js","data-connect":"https://www.gstatic.com/firebasejs/11.1.0/firebase-data-connect.js","firestore.memory":"https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.memory.js"}}
+[info] +  Wrote public/index.html 
+[info] 
+=== Storage Setup
+[info] 
+[info] Firebase Storage Security Rules allow you to define how and when to allow
+[info] uploads and downloads. You can keep these rules in your project directory
+[info] and publish them with firebase deploy.
+[info] 
+[info] +  Wrote storage.rules 
+[info] 
+=== Emulators Setup
+[info] 
+=== Remoteconfig Setup
