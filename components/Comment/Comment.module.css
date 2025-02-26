@@ -1,0 +1,110 @@
+.commentSection {
+    margin-top: 20px;
+    background-color: #f9f9f9; /* Light background for contrast */
+    border-radius: 8px;
+    padding: 16px;
+  }
+  
+  /* List container for comments */
+  .commentList {
+    max-height: 300px; /* Or remove if you want no scroll limit */
+    overflow-y: auto;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+  }
+  
+  /* If no comments exist */
+  .noComment {
+    color: #777;
+    font-size: 14px;
+    text-align: center;
+    margin: 10px 0;
+  }
+  
+  /* Each comment item (avatar + text) */
+  .commentItem {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 10px;
+  }
+  
+  /* Avatar on the left */
+  .commentAvatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+  }
+  
+  /* Container for author + time + text */
+  .commentContent {
+    flex: 1;
+    background-color: #fff;
+    border-radius: 6px;
+    padding: 10px;
+    border: 1px solid #eee;
+  }
+  
+  /* Header row with author and time */
+  .commentHeader {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+  }
+  
+  .commentAuthor {
+    font-weight: 600;
+    color: #333;
+    font-size: 14px;
+  }
+  
+  .commentTime {
+    font-size: 12px;
+    color: #999;
+  }
+  
+  /* The actual comment text */
+  .commentText {
+    font-size: 14px;
+    color: #444;
+    line-height: 1.4;
+  }
+  
+  /* New comment input form */
+  .commentForm {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  
+  .commentInput {
+    flex: 1;
+    min-height: 40px;
+    resize: none;
+    font-size: 14px;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+  }
+  
+  .commentInput:focus {
+    border-color: #999;
+  }
+  
+  .commentButton {
+    background-color: #0095f6;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  .commentButton:hover {
+    background-color: #007bbd;
+  }
+  

@@ -1,0 +1,103 @@
+.postContainer {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  font-family: 'Roboto', sans-serif;
+}
+
+.postHeader {
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+}
+
+.postUserPic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.postUserInfo {
+  flex: 1;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.postUsername {
+  font-weight: 600;
+  font-size: 14px;
+  color: #333;
+}
+
+.postTime {
+  font-size: 12px;
+  color: #999;
+}
+
+.postMoreIcon {
+  cursor: pointer;
+  color: #666;
+}
+
+.postImageContainer {
+  width: 100%;
+  background: #000;
+  display: flex;
+  justify-content: center;
+}
+
+.postImage {
+  width: 100%;
+  max-height: 500px;
+  object-fit: contain;
+}
+
+.postActions {
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+}
+
+.actionsLeft {
+  display: flex;
+  gap: 15px;
+}
+
+.postActionIcon {
+  cursor: pointer;
+  font-size: 24px;
+  color: #333;
+}
+
+.postLikesCount {
+  padding: 0 12px 8px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #333;
+}
+
+.postCaption {
+  padding: 0 12px 12px;
+  font-size: 14px;
+  color: #333;
+  line-height: 1.4;
+}
+
+.privacyBadge {
+  padding: 4px 8px;
+  background: #eee;
+  color: #333;
+  font-size: 12px;
+  border-radius: 4px;
+  display: inline-block;
+  margin: 8px 12px;
+}
+
+.privacyIcon {
+  font-size: 16px;
+  vertical-align: middle;
+}

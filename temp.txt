@@ -1,0 +1,35 @@
+users (collection)
+  uid (document)
+    username: string            // unique handle, e.g. "john_doe"
+    displayName: string         // user's displayed name
+    email: string               // user’s email
+    profilePicUrl: string       // profile image
+    bio: string                 // user's bio
+    website: string             // optional personal website
+    createdAt: Timestamp        
+    lastLoginAt: Timestamp
+    // Social links:
+    linkedAccounts: {
+      google: boolean,
+      facebook: boolean,
+      github: boolean
+    }
+    // 2FA:
+    twoFactorEnabled: boolean
+    twoFactorSecret: string      // stored securely (or handle via Auth)
+    
+    // Denormalized counts:
+    friendsCount: number
+    postsCount: number
+    followersCount: number
+    followingCount: number
+    
+    blockedUsersCount: number
+    
+    privacySettings: {
+      defaultPostPrivacy: "public" | "private" | "friends"
+      showEmail: boolean
+      showActivityStatus: boolean
+      // other preferences...
+    }
+
