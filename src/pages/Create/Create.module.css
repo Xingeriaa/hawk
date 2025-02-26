@@ -1,99 +1,38 @@
 /* Create.module.css */
-/* Không cần đặt style cho body, html nếu chúng là style global */
 
+/* Dark background for the entire page */
 .pageWrapper {
   display: flex;
   min-height: 100vh;
+  background-color: #121212; /* Dark theme */
+  color: #f5f5f5;           /* Light text */
 }
 
-/* Sidebar styles chỉ được dùng trong Create page nếu cần, 
-   nếu bạn đã tách Sidebar thành component riêng thì có thể bỏ phần này */
-.sidebar {
-  display: none;
-  flex-direction: column;
-  width: 80px;
-  background: #000;
-  align-items: center;
-  border-right: 1px solid #333;
-}
-
-.sidebarLogo {
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
-  cursor: pointer;
-  margin-top: 20px;
-  transition: transform 0.2s ease;
-}
-
-.sidebarLogo:hover {
-  transform: scale(1.05);
-}
-
-.iconContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  margin-top: 30px;
-}
-
-.icon {
-  color: white;
-  font-size: 24px;
-  cursor: pointer;
-  transition: color 0.2s ease, transform 0.2s ease;
-}
-
-.icon:hover {
-  color: #ffcc00;
-  transform: scale(1.1);
-}
-
-.settingsIcon {
-  margin-top: auto;
-  margin-bottom: 30px;
-}
-
-.profileSidebarProfile {
-  width: 50px;
-  margin-bottom: 20px;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.profileImage {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  border: 1px solid #444;
-  object-fit: cover;
-}
-
-/* Create wrapper and content */
+/* The main create area, displayed next to the sidebar */
 .createWrapper {
   flex: 1;
   display: flex;
   flex-direction: column;
-  background: #ffffff;
+  padding: 20px;
 }
 
+/* Header at the top of the create page */
 .createHeader {
   width: 100%;
-  border-bottom: 1px solid #ddd;
   padding: 10px 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-bottom: 1px solid #333;
 }
 
 .createHeader h2 {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
   margin: 0;
 }
 
+/* Drag-and-drop area / initial screen */
 .createContent {
   flex: 1;
   display: flex;
@@ -102,58 +41,61 @@
   align-items: center;
   gap: 20px;
   text-align: center;
-  color: #333;
   padding: 20px;
-}
-
-.createIconContainer {
-  font-size: 48px;
-  color: #999;
-}
-
-.createIcon {
-  width: 80px;
-  height: 80px;
-  background: url('data:image/svg+xml;utf8,<svg height="80px" width="80px" viewBox="0 0 48 48" fill="%23999" xmlns="http://www.w3.org/2000/svg"><path d="M40 34.4V13.6C40 8.3 35.7 4 30.4 4H17.6C12.3 4 8 8.3 8 13.6V34.4C8 39.7 12.3 44 17.6 44H30.4C35.7 44 40 39.7 40 34.4ZM17 13.6C17 11.5 18.5 10 20.6 10H27.4C29.5 10 31 11.5 31 13.6V34.4C31 36.5 29.5 38 27.4 38H20.6C18.5 38 17 36.5 17 34.4V13.6ZM24 21.2C25.6 21.2 27 22.6 27 24.2C27 25.8 25.6 27.2 24 27.2C22.4 27.2 21 25.8 21 24.2C21 22.6 22.4 21.2 24 21.2Z"/></svg>') no-repeat center / contain;
+  border: 2px dashed #555;     /* Dashed border for drag area */
+  border-radius: 8px;
+  margin: 20px auto;
+  max-width: 600px;            /* Limit the width for a cleaner look */
+  background-color: #1c1c1c;   /* Slightly lighter than page background */
 }
 
 .createText {
-  font-size: 14px;
-  color: #333;
+  font-size: 16px;
+  color: #ccc;
+  margin: 0;
 }
 
 .createButton {
   background: #0095f6;
   color: #fff;
   border: none;
-  padding: 8px 15px;
+  padding: 10px 18px;
   font-size: 14px;
   border-radius: 4px;
   cursor: pointer;
   font-weight: 600;
+  transition: background 0.2s ease;
 }
 
 .createButton:hover {
   background: #007bbd;
 }
 
-/* Confirmation UI styles */
+/* Confirmation UI after user selects an image/video */
 .confirmationUI {
   flex: 1;
   display: flex;
   flex-direction: column;
 }
 
+/* Header row with back arrow, title, and share link */
 .confirmationUIHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #ddd;
-  padding: 10px;
+  padding: 10px 20px;
+  border-bottom: 1px solid #333;
+  background-color: #1c1c1c;
 }
 
 .backIcon {
   cursor: pointer;
+  color: #ccc;
+  transition: color 0.2s ease;
+}
+
+.backIcon:hover {
+  color: #fff;
 }
 
 .confirmationUIHeader h2 {
@@ -162,31 +104,35 @@
   margin: 0;
   flex: 1;
   text-align: center;
+  color: #f5f5f5;
 }
 
 .shareLink {
   color: #0095f6;
   font-weight: 600;
   cursor: pointer;
+  transition: color 0.2s ease;
 }
 
 .shareLink:hover {
-  text-decoration: underline;
+  color: #007bbd;
 }
 
+/* Container for the image/video on the left and side panel on the right */
 .confirmationUIContent {
   display: flex;
   flex: 1;
   overflow: hidden;
 }
 
-/* Left side: image display */
+/* Left side: preview area */
 .confirmationImageContainer {
   flex: 2;
   display: flex;
   justify-content: center;
   align-items: center;
   background: #000;
+  border-right: 1px solid #333;
 }
 
 .confirmationImg {
@@ -196,16 +142,17 @@
   background: #000;
 }
 
-/* Right side: side panel */
+/* Right side: side panel (caption, privacy, etc.) */
 .confirmationSidePanel {
   flex: 1;
   display: flex;
   flex-direction: column;
-  border-left: 1px solid #ddd;
   padding: 20px;
   overflow-y: auto;
+  background-color: #1c1c1c;
 }
 
+/* User info row at top of side panel */
 .confirmationUserInfo {
   display: flex;
   align-items: center;
@@ -224,9 +171,10 @@
 .confirmationUsername {
   font-weight: 600;
   font-size: 14px;
-  color: #000;
+  color: #f5f5f5;
 }
 
+/* Caption input box */
 .captionInput {
   width: 100%;
   border: none;
@@ -236,37 +184,48 @@
   margin-bottom: 10px;
   height: 80px;
   outline: none;
-  color: #000;
-  border-bottom: 1px solid #eee;
+  color: #fff;
+  border-bottom: 1px solid #555;
   padding-bottom: 10px;
+  background-color: transparent;
+}
+
+.captionInput::placeholder {
+  color: #888;
 }
 
 .captionLength {
   font-size: 12px;
-  color: #999;
+  color: #888;
   margin-bottom: 20px;
   text-align: right;
 }
 
-.confirmationOptions {
+/* Privacy & other options */
+.confirmationOptions{
   display: flex;
   flex-direction: column;
   gap: 10px;
+
+}
+
+.confirmationOptions *{
+  color: white;
 }
 
 .optionItem {
   font-size: 14px;
-  color: #000;
+  color: #ccc;
   cursor: pointer;
   padding: 5px 0;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #333;
 }
 
 .optionItem:last-child {
   border-bottom: none;
 }
 
-/* Responsive adjustments */
+/* Bottom nav or sidebar might be displayed or hidden depending on screen size */
 @media (max-width: 1023px) {
   .sidebar {
     display: none;
@@ -277,6 +236,8 @@
   .confirmationImageContainer {
     flex: none;
     max-height: 300px;
+    border-right: none;
+    border-bottom: 1px solid #333;
   }
 }
 

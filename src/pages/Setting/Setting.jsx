@@ -50,6 +50,20 @@ export default function Setting() {
   const [actionType, setActionType] = useState(null);
   const fileInputRef = useRef(null);
 
+  const [currentUserId, setCurrentUserId] = useState(null);
+
+useEffect(() => {
+  const unsubscribe = onAuthStateChanged(auth, async (user) => {
+    if (user) {
+      setUserPhotoURL(user.photoURL || 'src/assets/DefaultProfilePic/Default.jpg');
+      setCurrentUserId(user.uid); // Save the user's UID
+    } else {
+      navigate('/');
+    }
+  });
+  return () => unsubscribe();
+}, [navigate]);
+
   useEffect(() => {
     document.body.style.background = '#0d0d0d';
     return () => {
@@ -282,28 +296,8 @@ export default function Setting() {
             />
           </div>
         </div>
-        <div className={styles.settingRow}>
-          <AlternateEmailIcon className={styles.settingRowIcon} />
-          <span className={styles.settingRowText}>Mentions</span>
-          <div className={styles.settingRowRight}>
-            <span>Everyone</span>
-          </div>
-        </div>
-        <div className={styles.settingRow}>
-          <WifiTetheringIcon className={styles.settingRowIcon} />
-          <span className={styles.settingRowText}>Online status</span>
-          <div className={styles.settingRowRight}>
-            <span>Followers</span>
-          </div>
-        </div>
-        <div className={styles.settingRow}>
-          <VisibilityOffIcon className={styles.settingRowIcon} />
-          <span className={styles.settingRowText}>Hidden Words</span>
-          <div className={styles.settingRowArrow}>
-            <ArrowForwardIosIcon className={styles.arrowIcon} />
-          </div>
-        </div>
       </div>
+      <br />
       <Button variant="contained" className={styles.deleteButton} onClick={() => { setActionType('delete'); setConfirmationDialogOpen(true); }}>
         Delete Account
       </Button>
@@ -317,14 +311,6 @@ export default function Setting() {
     <>
       <div className={styles.profileCard}>
         <img src={userPhotoURL} alt="Profile" className={styles.profileAvatarLarge} />
-        <div className={styles.profileInfoSection}>
-          <Typography variant="body1" className={styles.profileUsername}>
-            {usernameInput || 'Username'}
-          </Typography>
-          <Typography variant="body2" className={styles.profileDisplayName}>
-            {displayNameInput || 'Display Name'}
-          </Typography>
-        </div>
         <Button variant="contained" className={styles.changePhotoButton} onClick={() => fileInputRef.current.click()}>
           Change photo
         </Button>
@@ -431,7 +417,7 @@ export default function Setting() {
   return (
     <>
       <div className={styles.pageWrapper}>
-        <Sidebar userPhotoURL={userPhotoURL} />
+        <Sidebar userPhotoURL={userPhotoURL} currentUserId={currentUserId}/>
         <div className={styles.contentArea}>
           <div className={styles.topNav}>
             <ArrowBackIosNewIcon className={styles.backIcon} onClick={() => handleNavigate('/profile')} />

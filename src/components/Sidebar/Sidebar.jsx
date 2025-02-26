@@ -1,24 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-// Import Firestore methods & your db from firebase.js
-import { collection, getDocs, doc, deleteDoc } from 'firebase/firestore';
-import { db } from '../../config/firebase.js'; // <-- Adjust path to your firebase.js
-
-// Optionally import auth if you want to detect current user here
-// import { auth } from '../firebase';
-// import { onAuthStateChanged } from 'firebase/auth';
+// Import Firestore methods & your db and auth from firebase.js
+import { collection, getDocs, doc, deleteDoc, addDoc, onSnapshot } from 'firebase/firestore';
+import { db, auth } from '../../config/firebase'; // Adjust path as needed
 
 // Icons
 import HomeHomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import SearchIcon from '@mui/icons-material/Search';
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
-import MovieFilterOutlinedIcon from '@mui/icons-material/MovieFilterOutlined';
-import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import SettingsIcon from '@mui/icons-material/Settings';
 
-// Styles
+// CSS
 import styles from './Sidebar.module.css';
 
 const Sidebar = ({ userPhotoURL, currentUserId }) => {
@@ -28,43 +21,46 @@ const Sidebar = ({ userPhotoURL, currentUserId }) => {
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
   // State for friend requests data
   const [friendRequests, setFriendRequests] = useState([]);
-  // Loading/error states
+  // Loading and error states
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // Optional: If you want to detect the current user here, you could do something like:
-  /*
-  const [loggedInUserId, setLoggedInUserId] = useState(null);
+  // Refs for the favorite icon container and notifications panel
+  const iconRef = useRef(null);
+  const panelRef = useRef(null);
 
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setLoggedInUserId(user.uid);
-      } else {
-        setLoggedInUserId(null);
-      }
-    });
-  }, []);
-  */
-
-  // Toggle the notifications panel open/close
+  // Toggle the notifications panel on Favorite icon click
   const toggleNotificationsPanel = () => {
     setIsNotificationsOpen((prev) => !prev);
   };
 
-  // Fetch friend requests whenever the panel is opened
+  useEffect(() => {
+    if (currentUserId) {
+      const friendRequestsRef = collection(db, 'users', currentUserId, 'friendRequests');
+      const unsubscribe = onSnapshot(friendRequestsRef, snapshot => {
+        const requestsData = snapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setFriendRequests(requestsData);
+      });
+      return () => unsubscribe();
+    }
+  }, [currentUserId]);
+  
+
+  // Fetch friend requests when the panel is open
   useEffect(() => {
     if (isNotificationsOpen && currentUserId) {
       fetchFriendRequests();
     }
   }, [isNotificationsOpen, currentUserId]);
 
-  // Fetch friendRequests from Firestore
+  // Function to fetch friendRequests from Firestore
   const fetchFriendRequests = async () => {
     setLoading(true);
     setError(null);
     try {
-      // Reference: users/<uid>/friendRequests
       const friendRequestsRef = collection(db, 'users', currentUserId, 'friendRequests');
       const snapshot = await getDocs(friendRequestsRef);
       const requestsData = snapshot.docs.map((doc) => ({
@@ -78,22 +74,40 @@ const Sidebar = ({ userPhotoURL, currentUserId }) => {
     setLoading(false);
   };
 
-  // Example: confirm a friend request
-  const handleConfirmRequest = async (requestId) => {
-    console.log('Confirm friend request:', requestId);
-    // Typically you'd update or move the doc, e.g.:
-    // await updateDoc(doc(db, 'users', currentUserId, 'friendRequests', requestId), {
-    //   status: 'accepted',
-    // });
-    // Then refetch or remove it from local state
+  // Function to accept a friend request and add mutual friendship
+  const handleAcceptRequest = async (request) => {
+    try {
+      // Add the accepted friend to the current user's 'friends' subcollection.
+      const currentUserFriendsRef = collection(db, 'users', currentUserId, 'friends');
+      await addDoc(currentUserFriendsRef, {
+        friendId: request.senderId,
+        displayName: request.displayName,
+        email: request.email,
+        acceptedAt: new Date(),
+      });
+
+      // Add the current user to the sender's 'friends' subcollection for mutual friendship.
+      const senderFriendsRef = collection(db, 'users', request.senderId, 'friends');
+      const currentUser = auth.currentUser;
+      await addDoc(senderFriendsRef, {
+        friendId: currentUserId,
+        displayName: currentUser.displayName || 'No Name',
+        email: currentUser.email || 'No Email',
+        acceptedAt: new Date(),
+      });
+
+      // Remove the friend request after acceptance
+      await deleteDoc(doc(db, 'users', currentUserId, 'friendRequests', request.id));
+      setFriendRequests((prev) => prev.filter((req) => req.id !== request.id));
+    } catch (err) {
+      console.error(err);
+    }
   };
 
-  // Example: delete a friend request
-  const handleDeleteRequest = async (requestId) => {
-    console.log('Delete friend request:', requestId);
+  // Function to deny a friend request
+  const handleDenyRequest = async (requestId) => {
     try {
       await deleteDoc(doc(db, 'users', currentUserId, 'friendRequests', requestId));
-      // Remove it from local state
       setFriendRequests((prev) => prev.filter((req) => req.id !== requestId));
     } catch (err) {
       console.error(err);
@@ -103,6 +117,23 @@ const Sidebar = ({ userPhotoURL, currentUserId }) => {
   const handleNavigate = (path) => {
     navigate(path);
   };
+
+  // Close the notifications panel if the user clicks outside the icon or panel
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        isNotificationsOpen &&
+        panelRef.current &&
+        iconRef.current &&
+        !panelRef.current.contains(event.target) &&
+        !iconRef.current.contains(event.target)
+      ) {
+        setIsNotificationsOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isNotificationsOpen]);
 
   return (
     <>
@@ -115,75 +146,54 @@ const Sidebar = ({ userPhotoURL, currentUserId }) => {
           onClick={() => handleNavigate('/home')}
         />
         <div className={styles.iconContainer}>
-          <HomeHomeOutlinedIcon
-            className={styles.icon}
-            onClick={() => handleNavigate('/home')}
-          />
-          <SearchIcon
-            className={styles.icon}
-            onClick={() => handleNavigate('/search')}
-          />
-          <AddBoxOutlinedIcon
-            className={styles.icon}
-            onClick={() => handleNavigate('/create')}
-          />
-          <MovieFilterOutlinedIcon
-            className={styles.icon}
-            onClick={() => handleNavigate('/movies')}
-          />
-          {/* Toggle notifications panel on click */}
-          <FavoriteBorderOutlinedIcon
-            className={styles.icon}
-            onClick={toggleNotificationsPanel}
-          />
-          <ChatBubbleOutlineOutlinedIcon
-            className={styles.icon}
-            onClick={() => handleNavigate('/chat')}
-          />
+          <HomeHomeOutlinedIcon className={styles.icon} onClick={() => handleNavigate('/home')} />
+          <SearchIcon className={styles.icon} onClick={() => handleNavigate('/search')} />
+          <AddBoxOutlinedIcon className={styles.icon} onClick={() => handleNavigate('/create')} />
+          {/* Wrap the Favorite icon in a div to attach a ref */}
+          <div ref={iconRef} style={{ position: 'relative' }}>
+            <FavoriteBorderOutlinedIcon className={styles.icon} onClick={toggleNotificationsPanel} />
+            {friendRequests.length > 0 && (
+              <span className={styles.notificationBubble}>
+                {friendRequests.length}
+              </span>
+            )}
+          </div>
         </div>
-        <SettingsIcon
-          className={`${styles.icon} ${styles.settingsIcon}`}
-          onClick={() => handleNavigate('/setting')}
-        />
-        <div
-          className={styles.profileSidebarProfile}
-          onClick={() => handleNavigate('/profile')}
-        >
+        <SettingsIcon className={`${styles.icon} ${styles.settingsIcon}`} onClick={() => handleNavigate('/setting')} />
+        <div className={styles.profileSidebarProfile} onClick={() => handleNavigate('/profile')}>
           <img src={userPhotoURL} alt="Profile" className={styles.profileImage} />
         </div>
       </div>
 
       {/* NOTIFICATIONS PANEL */}
-      <div
-        className={`${styles.notificationsPanel} ${
-          isNotificationsOpen ? styles.open : ''
-        }`}
-      >
+      <div ref={panelRef} className={`${styles.notificationsPanel} ${isNotificationsOpen ? styles.open : ''}`}>
         <div className={styles.notificationsHeader}>
           <h2>Friend Requests</h2>
-          <button onClick={toggleNotificationsPanel} className={styles.closeButton}>
-            X
-          </button>
         </div>
-
         <div className={styles.notificationsContent}>
           {loading && <p>Loading friend requests...</p>}
           {error && <p style={{ color: 'red' }}>Error: {error}</p>}
-          {!loading && !error && friendRequests.length === 0 && (
-            <p>No friend requests</p>
-          )}
-
+          {!loading && !error && friendRequests.length === 0 && <p>No friend requests</p>}
           {friendRequests.map((request) => (
             <div key={request.id} className={styles.notificationItem}>
-              <div>
+              <div className={styles.requestAvatar}>
+                <img
+                  src={request.photoURL || '/src/assets/DefaultProfilePic/Default.jpg'}
+                  alt={request.displayName}
+                />
+              </div>
+              <div className={styles.requestInfo}>
                 <p>
                   <strong>{request.displayName}</strong> sent you a friend request
                 </p>
-                <p>Email: {request.email}</p>
               </div>
-              <div>
-                <button onClick={() => handleConfirmRequest(request.id)}>Confirm</button>
-                <button onClick={() => handleDeleteRequest(request.id)}>Delete</button>
+              <div className={styles.buttonGroup}>
+                <button className={styles.acceptButton} onClick={() => handleAcceptRequest(request)}>
+                  Accept
+                </button>
+                <button className={styles.denyButton} onClick={() => handleDenyRequest(request.id)}>
+                  Deny
+                </button>
               </div>
             </div>
           ))}
@@ -194,4 +204,3 @@ const Sidebar = ({ userPhotoURL, currentUserId }) => {
 };
 
 export default Sidebar;
- 

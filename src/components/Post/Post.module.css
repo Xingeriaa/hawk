@@ -1,112 +1,36 @@
-.pageWrapper {
-  display: flex;
-  min-height: 100vh;
-}
-
-.sidebar {
-  display: none;
-  flex-direction: column;
-  width: 80px;
-  background: #000;
-  align-items: center;
-  border-right: 1px solid #333;
-}
-
-.sidebarLogo {
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
-  cursor: pointer;
-  margin-top: 20px;
-  transition: transform 0.2s ease;
-}
-
-.sidebarLogo:hover {
-  transform: scale(1.05);
-}
-
-.iconContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  margin-top: 30px;
-}
-
-.icon {
-  color: white;
-  font-size: 24px;
-  cursor: pointer;
-  transition: color 0.2s ease, transform 0.2s ease;
-}
-
-/* Thêm class cho hiệu ứng hover riêng */
-.iconHover:hover {
-  color: #ffcc00;
-  transform: scale(1.1);
-}
-
-.settingsIcon {
-  margin-bottom: 30px;
-}
-
-.profileSidebarProfile {
-  width: 50px;
-  margin-bottom: 20px;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.profileImage {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  border: 1px solid #444;
-  object-fit: cover;
-}
-
-.contentArea {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 40px;
-}
-
 .postContainer {
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
-  width: 100%;
-  max-width: 600px;
-  margin-top: 50px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  font-family: 'Roboto', sans-serif;
 }
 
 .postHeader {
   display: flex;
   align-items: center;
-  padding: 10px;
+  padding: 10px 12px;
 }
 
 .postUserPic {
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   object-fit: cover;
-  margin-right: 10px;
+  cursor: pointer;
 }
 
 .postUserInfo {
-  display: flex;
-  flex-direction: column;
   flex: 1;
+  margin-left: 10px;
+  cursor: pointer;
 }
 
 .postUsername {
   font-weight: 600;
   font-size: 14px;
-  color: #000;
+  color: #333;
 }
 
 .postTime {
@@ -116,25 +40,26 @@
 
 .postMoreIcon {
   cursor: pointer;
-  color: #333;
+  color: #666;
 }
 
 .postImageContainer {
+  width: 100%;
+  background: #000;
   display: flex;
   justify-content: center;
-  background: #000;
 }
 
 .postImage {
-  max-width: 100%;
-  height: auto;
+  width: 100%;
+  max-height: 500px;
   object-fit: contain;
 }
 
 .postActions {
+  padding: 8px 12px;
   display: flex;
   align-items: center;
-  padding: 10px;
 }
 
 .actionsLeft {
@@ -145,68 +70,34 @@
 .postActionIcon {
   cursor: pointer;
   font-size: 24px;
-  color: #000;
+  color: #333;
 }
 
 .postLikesCount {
+  padding: 0 12px 8px;
   font-weight: 600;
   font-size: 14px;
-  margin: 0 10px 10px 10px;
-  color: #000;
+  color: #333;
 }
 
 .postCaption {
+  padding: 0 12px 12px;
   font-size: 14px;
-  color: #000;
-  margin: 0 10px 10px 10px;
+  color: #333;
   line-height: 1.4;
 }
 
-.postCaption .postUsername {
-  font-weight: 600;
-  margin-right: 5px;
-}
-
-.bottomNavContainer {
-  display: flex;
-  position: fixed;
-  width: 100%;
-  justify-content: space-around;
-  align-items: center;
-  background-color: #000;
-  padding: 10px 0;
-  bottom: 0;
-  border-top: 1px solid #333;
-  z-index: 10;
-}
-
-.bottomProfile {
-  margin-bottom: 0;
-}
-
 .privacyBadge {
-  background: #eee;
   padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 12px;
+  background: #eee;
   color: #333;
-  margin-top: 10px;
+  font-size: 12px;
+  border-radius: 4px;
   display: inline-block;
+  margin: 8px 12px;
 }
 
 .privacyIcon {
   font-size: 16px;
-  color: #333;
-}
-
-@media (min-width: 1024px) {
-  .sidebar {
-    display: flex;
-  }
-  .bottomNavContainer {
-    display: none;
-  }
-  .contentArea {
-    padding: 40px;
-  }
+  vertical-align: middle;
 }

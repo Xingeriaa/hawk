@@ -292,7 +292,7 @@ export default function Home() {
     <>
       <div className={styles.pageWrapper}>
         {/* Sidebar */}
-        <Sidebar userPhotoURL={userPhotoURL} />
+        <Sidebar userPhotoURL={userPhotoURL} currentUserId={currentUserId}/>
 
         <div className={styles.contentArea}>
           <div className={styles.feedContainer}>

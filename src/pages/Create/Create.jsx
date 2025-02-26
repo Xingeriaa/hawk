@@ -26,7 +26,7 @@ export default function Create() {
   const [showConfirmation, setShowConfirmation] = useState(false); 
   const [caption, setCaption] = useState('');
   const [privacyMode, setPrivacyMode] = useState('Public');
-
+  
   // Cloudinary details
   const cloudName = "djqcoypqf";
   const uploadPreset = "PostImages";
@@ -153,7 +153,7 @@ export default function Create() {
   return (
     <div className={styles.pageWrapper}>
       {/* Sidebar */}
-      <Sidebar userPhotoURL={userPhotoURL} />
+      <Sidebar userPhotoURL={userPhotoURL} currentUserId={currentUserId}/>
 
       {/* Create Content Area */}
       <div className={styles.createWrapper}>
@@ -167,9 +167,6 @@ export default function Create() {
               onDragOver={handleDragOver} 
               onDrop={handleDrop}
             >
-              <div className={styles.createIconContainer}>
-                <div className={styles.createIcon}></div>
-              </div>
               <p className={styles.createText}>Drag photos and videos here</p>
               <button className={styles.createButton} onClick={handleSelectFromComputer}>
                 Select from computer
@@ -215,21 +212,24 @@ export default function Create() {
                 ></textarea>
                 <div className={styles.captionLength}>{caption.length}/2200</div>
                 <div className={styles.confirmationOptions}>
-                  <FormControl fullWidth sx={{ marginBottom: '20px' }}>
-                    <InputLabel id="privacy-mode-label">Privacy</InputLabel>
-                    <Select
-                      labelId="privacy-mode-label"
-                      value={privacyMode}
-                      label="Privacy"
-                      onChange={(e) => setPrivacyMode(e.target.value)}
-                    >
-                      <MenuItem value="Public">Public</MenuItem>
-                      <MenuItem value="Private">Private</MenuItem>
-                      <MenuItem value="Friends Only">Friends Only</MenuItem>
-                    </Select>
-                  </FormControl>
-                  <div className={styles.optionItem}>Add location</div>
-                  <div className={styles.optionItem}>Add collaborators</div>
+                <FormControl fullWidth sx={{ 
+                  '& .MuiInputBase-root': { color: 'white' },  // Text inside the input
+                  '& .MuiInputLabel-root': { color: 'white' },   // Label color
+                  '& .MuiOutlinedInput-notchedOutline': { borderColor: 'white' } // Outline border color
+                }}>
+                  <InputLabel id="privacy-mode-label">Privacy</InputLabel>
+                  <Select
+                    labelId="privacy-mode-label"
+                    value={privacyMode}
+                    label="Privacy"
+                    onChange={(e) => setPrivacyMode(e.target.value)}
+                  >
+                    <MenuItem value="Public">Public</MenuItem>
+                    <MenuItem value="Private">Private</MenuItem>
+                    <MenuItem value="Friends Only">Friends Only</MenuItem>
+                  </Select>
+                </FormControl>
+
                 </div>
               </div>
             </div>

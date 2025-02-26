@@ -1,94 +1,95 @@
 :global(html, body) {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    width: 100%;
-    height: 100%;
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+}
+
+.loginContainer {
+  /* Renamed “loginContainer” is reused for both pages */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  background: #fff;       /* Use white background */
+  color: #000;            /* Dark text */
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fadeIn {
+  opacity: 1;
+}
+.fadeOut {
+  opacity: 0;
+}
+
+.centerBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 95%;
+  margin-bottom: 20px;
+}
+
+.boxContent {
+  width: 100%;
+  padding: 15px;
+  text-align: center;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.titleContent {
+  padding: 15px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.buttonGroup {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.buttonGroup button {
+  color: #1e232c;
+  border-color: #1e232c;
+  width: 28%;
+}
+
+:global(a) {
+  color: #1e232c;
+  text-decoration: none;
+}
+
+@media (min-width: 768px) {
   .loginContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-    border: 1px solid black;
-    transition: opacity 0.5s ease-in-out;
+    padding: 40px;
   }
-  
   .centerBox {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 95%;
-    margin-bottom: 20px;
+    width: 80%;
   }
-  
-  .boxContent {
-    width: 100%;
-    padding: 15px;
-    text-align: center;
-    max-width: 400px;
-    margin: 0 auto;
-  }
-  
-  .titleContent {
-    padding: 15px;
-    max-width: 400px;
-    margin: 0 auto;
-  }
-  
+  .boxContent,
+  .titleContent,
   .buttonGroup {
-    width: 100%;
+    max-width: 500px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .loginContainer {
+    padding: 60px;
+  }
+  .centerBox {
+    width: 60%;
+  }
+  .boxContent,
+  .titleContent,
+  .buttonGroup {
     max-width: 400px;
-    display: flex;
-    justify-content: space-around;
   }
-  
-  .buttonGroup button {
-    color: #1e232c;
-    border-color: #1e232c;
-    width: 28%;
-  }
-  
-  :global(a) {
-    color: #1e232c;
-    text-decoration: none;
-  }
-  
-  .fadeIn {
-    opacity: 1;
-  }
-  .fadeOut {
-    opacity: 0;
-  }
-  
-  @media (min-width: 768px) {
-    .loginContainer {
-      padding: 40px;
-    }
-    .centerBox {
-      width: 80%;
-    }
-    .boxContent,
-    .titleContent,
-    .buttonGroup {
-      max-width: 500px;
-    }
-  }
-  
-  @media (min-width: 1024px) {
-    .loginContainer {
-      padding: 60px;
-    }
-    .centerBox {
-      width: 60%;
-    }
-    .boxContent,
-    .titleContent,
-    .buttonGroup {
-      max-width: 400px;
-    }
-  }
-  
+}

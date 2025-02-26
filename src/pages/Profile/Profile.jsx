@@ -4,29 +4,27 @@ import HomeIcon from '@mui/icons-material/Home';
 import SearchIcon from '@mui/icons-material/Search';
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 import MovieFilterOutlinedIcon from '@mui/icons-material/MovieFilterOutlined';
-import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
-import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-import SettingsIcon from '@mui/icons-material/Settings';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import { doc, getDoc, collection, query, where, limit, getDocs, orderBy } from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth, db } from '../../config/firebase';
 import styles from './Profile.module.css';
 import Sidebar from '../../components/Sidebar/Sidebar.jsx';
+import Post from '../../components/Post/Post.jsx'; // New shared Post component
 
 export default function Profile() {
   const navigate = useNavigate();
   const { username } = useParams();
   const [userPhotoURL, setUserPhotoURL] = useState('src/assets/DefaultProfilePic/Default.jpg');
   const [displayName, setDisplayName] = useState('Guest');
-  const [followersCount, setFollowersCount] = useState(0);
   const [postsCount, setPostsCount] = useState(0);
-  const [followingCount, setFollowingCount] = useState(0);
+  const [friendCount, setFriendCount] = useState(0);
   const [profileUsername, setProfileUsername] = useState('');
   const [profileUserId, setProfileUserId] = useState(null);
   const [userPosts, setUserPosts] = useState([]);
   const [currentUserId, setCurrentUserId] = useState(null);
 
+  // Fetch user data by username from the URL
   const fetchUserByUsername = useCallback(async (uname) => {
     try {
       const usersRef = collection(db, "users");
@@ -38,28 +36,46 @@ export default function Profile() {
         setProfileUserId(docSnap.id);
         setUserPhotoURL(data.profilePicUrl || 'src/assets/DefaultProfilePic/Default.jpg');
         setDisplayName(data.displayName || 'Guest');
-        setFollowersCount(data.followersCount || 0);
         setPostsCount(data.postsCount || 0);
-        setFollowingCount(data.followingCount || 0);
         setProfileUsername(data.username || '');
+        console.log("Fetched user:", docSnap.id, data);
       }
     } catch (error) {
-      console.error(error);
+      console.error("Error fetching user by username:", error);
     }
   }, []);
 
-  const fetchUserPosts = useCallback(async (uid) => {
+  // Fetch posts for the given user ID
+  const fetchUserPosts = async (uid) => {
     try {
-      const postsRef = collection(db, "posts");
-      const q = query(postsRef, where("userId", "==", uid), orderBy("createdAt", "desc"));
-      const querySnapshot = await getDocs(q);
-      const postsData = querySnapshot.docs.map(docSnap => ({ id: docSnap.id, ...docSnap.data() }));
+      const postsRef = collection(db, 'posts');
+      const q = query(
+        postsRef,
+        where('userId', '==', uid),
+        orderBy('createdAt', 'desc')
+      );
+      const snapshot = await getDocs(q);
+      const postsData = snapshot.docs.map(docSnap => ({ id: docSnap.id, ...docSnap.data() }));
+      console.log("Fetched posts for user", uid, postsData);
       setUserPosts(postsData);
     } catch (error) {
-      console.error(error);
+      console.error('Error fetching user posts:', error);
+    }
+  };
+
+  // Fetch friend count from the "friends" subcollection
+  const fetchFriendCount = useCallback(async (uid) => {
+    try {
+      const friendsRef = collection(db, "users", uid, "friends");
+      const friendsSnap = await getDocs(friendsRef);
+      setFriendCount(friendsSnap.docs.length);
+      console.log("Fetched friend count for", uid, friendsSnap.docs.length);
+    } catch (error) {
+      console.error("Error fetching friends:", error);
     }
   }, []);
 
+  // Listen for auth state changes and fetch profile data
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
@@ -74,9 +90,7 @@ export default function Profile() {
             setProfileUserId(user.uid);
             setUserPhotoURL(data.profilePicUrl || 'src/assets/DefaultProfilePic/Default.jpg');
             setDisplayName(data.displayName || 'Guest');
-            setFollowersCount(data.followersCount || 0);
             setPostsCount(data.postsCount || 0);
-            setFollowingCount(data.followingCount || 0);
             setProfileUsername(data.username || '');
           } else {
             setProfileUserId(user.uid);
@@ -91,11 +105,13 @@ export default function Profile() {
     return () => unsubscribe();
   }, [navigate, username, fetchUserByUsername]);
 
+  // When profileUserId is available, fetch posts and friend count
   useEffect(() => {
     if (profileUserId) {
       fetchUserPosts(profileUserId);
+      fetchFriendCount(profileUserId);
     }
-  }, [profileUserId, fetchUserPosts]);
+  }, [profileUserId, fetchUserPosts, fetchFriendCount]);
 
   const handleNavigate = useCallback((path) => {
     navigate(path);
@@ -106,7 +122,7 @@ export default function Profile() {
   return (
     <>
       <div className={styles.pageWrapper}>
-        <Sidebar userPhotoURL={userPhotoURL} />
+        <Sidebar userPhotoURL={userPhotoURL} currentUserId={currentUserId} />
 
         <div className={styles.profileContentContainer}>
           <div className={styles.profileCard}>
@@ -126,8 +142,7 @@ export default function Profile() {
                 </div>
                 <div className={styles.profileStatsRow}>
                   <span><strong>{postsCount}</strong> posts</span>
-                  <span><strong>{followersCount}</strong> followers</span>
-                  <span><strong>{followingCount}</strong> following</span>
+                  <span><strong>{friendCount}</strong> friends</span>
                 </div>
               </div>
             </div>
@@ -137,13 +152,20 @@ export default function Profile() {
 
       <div className={styles.postsGridContainer}>
         {userPosts.length === 0 ? (
-          <p style={{ textAlign: 'center', color: '#fff', marginTop: '20px' }}>No posts yet</p>
+          <p style={{ textAlign: 'center', color: '#fff', marginTop: '20px' }}>
+            No posts yet
+          </p>
         ) : (
           <div className={styles.profilePostGrid}>
             {userPosts.map((post) => (
-              <div className={styles.postGridItem} key={post.id}>
-                <img src={post.imageUrl} alt="Post" />
-              </div>
+              <Post
+                key={post.id}
+                post={post}
+                currentUserId={currentUserId}
+                onDeletePost={(id) => {
+                  // Optionally implement deletion logic here if needed.
+                }}
+              />
             ))}
           </div>
         )}
